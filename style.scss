@@ -1,0 +1,214 @@
+:host{
+  // width: fit-content;
+  width: 100%;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.app-multi-select{
+  position: relative;
+  height: 38px;
+  border-radius: 5px;
+  max-width: 100%;
+  background-color: var(--color-container-bg);
+  color: var(--color-container-text);
+  border: 1px solid var(--color-item-border);
+
+  // Style for selection
+  .app-multi-select__selection{
+    padding: 7px 10px;
+    display: flex;
+    height: 100%;
+
+    .label, .placehoder{
+      padding-right: 5px;
+      white-space: nowrap;
+    }
+
+    .plh{
+      color: var(--color-container-placeholder);
+    }
+
+    .count-number{
+      padding-right: 5px;
+    }
+
+    .value{
+      flex: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .icon{
+      width: 10px;
+      text-align: right;
+      color: #71717a;
+      font-size: 0.75rem;
+
+      &.clear{
+        margin-right: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .app-multi-select__search{
+    display: flex;
+    align-items: center;
+
+    i{
+      margin: 0 10px;
+      color: #6a6a6a;
+    }
+
+    input{
+      border: none;
+      background-color: transparent;
+      color: var(--color-container-text);
+      width: 100%;
+      padding: 5px 10px 5px 0;
+
+      &:focus{
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    border-bottom: 1px solid var(--color-container-border);
+  }
+
+  // Style for datalist
+  .app-multi-select__datalist{
+    position: absolute;
+    background-color: var(--color-container-bg);
+    // width: calc(100% + 2px);
+    border: 1px solid var(--color-item-border);
+    margin-left: -1px;
+    margin-right: -1px;
+    display: none;
+    z-index: 999;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: calc(100% + 2px);
+
+    label{
+      margin-bottom: 0 !important;
+    }
+
+    .check-mark{
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+      border-radius: 3px;
+      background-color: var(--color-container-border);
+      padding: 0;
+      line-height: 12px;
+      text-align: center;
+
+      i{
+        font-size: 10px;
+      }
+    
+      &.checked{
+        background-color: #119cff;
+        color: #ffffff;
+      }
+    }
+
+    .form-check-label{
+      margin-right: 5px;
+    }
+
+    .control-all{
+      padding: 5px 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      max-height: 250px;
+      overflow: auto;
+      padding-bottom: 5px;
+
+      li{
+        padding: 5px 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &.active{
+          background-color: var(--color-component-border);
+        }
+
+        &:not(.add-value):hover{
+          background-color: #5897fb;
+        }
+
+        .description{
+          color: var(--color-container-placeholder);
+          margin-left: 10px;
+          font-style: italic;
+          font-size: .9rem;
+        }
+      }
+    }
+
+    .no-item{
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+  }
+
+  &.open{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    .app-multi-select__datalist{
+      display: block;
+    }
+  }
+
+  &.relative{
+    .app-multi-select__datalist{
+      position: absolute;
+    }
+  }
+
+  &.size-sm{
+    height: 31px;
+
+    .app-multi-select__selection{
+      padding: 4px 8px;
+    }
+  }
+
+  .selection-warning{
+    color: #ffc107!important;
+  }
+
+  .selection-info{
+    color: #0dcaf0!important
+  }
+
+  .add-value{
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+}
+
+.item-image{
+  display: inline-flex;
+  align-items: center;
+
+  .avatar{
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+  }
+}
