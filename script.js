@@ -134,6 +134,10 @@ export default {
 
     isValueChanged() {
       return this.lastestValue != JSON.stringify(this.arrVal);
+    },
+
+    isCheckall() {
+      return this.filters.filter(item => this.arrVal.includes(item.value)).length == this.filters.length;
     }
   },
 
@@ -220,18 +224,22 @@ export default {
       if (this.options.length == 1 && this.required) {
         return;
       }
-
-      if (this.arrVal.length == this.options.length) {
-        this.onChange(
-          this.required && this.arrVal.length > 0 ? [this.options[0].value] : []
-        );
+  
+      let arr;
+  
+      if (this.isCheckall) {
+        arr = [...this.arrVal];
+  
+        this.filters.forEach((item) => {
+          arr.splice(arr.indexOf(item.value), 1);
+        });
       } else {
-        this.onChange([
-          ...this.options.map(function (item) {
-            return item.value;
-          }),
-        ]);
+        arr = this.filters.map(function(item){
+          return item.value;
+        });
       }
+  
+      this.onChange(arr);
     },
 
     clickout(event) {
